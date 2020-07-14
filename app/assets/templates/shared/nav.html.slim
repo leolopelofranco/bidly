@@ -12,11 +12,11 @@ header
         .col-md-8
           span on-toggle="toggled(open)" uib-dropdown="" 
             a#dropdown href="" uib-dropdown-toggle="" 
-              | Hi Deenu,
+              | Hi {{user.first_name}}
             ul.dropdown-menu aria-labelledby="simple-dropdown" uib-dropdown-menu="" 
               li ng-repeat="choice in items" 
-                a 
-                  | {{choice}}
+                a ui-sref="{{choice.link}}"
+                  | {{choice.label}}
           input type="text" class="form-control" placeholder="Search"
         .col-md-4#coins
           .row
@@ -24,7 +24,8 @@ header
               i.line-icon
                 | &#xe355;
             .col-md-8
-              p 100.00
+              p 
+                | {{user.credits}}
               p Credits
 .subnavbar
   p 

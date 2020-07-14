@@ -1,5 +1,5 @@
-Bidly.controller('NavController', ['$scope', '$location', 'DemoService', 'ngDialog',
-  function($scope, $location, DemoService, ngDialog) {
+Bidly.controller('NavController', ['$scope', '$location', 'DemoService', 'ngDialog', 'ItemService',
+  function($scope, $location, DemoService, ngDialog, ItemService) {
 
     $scope.register = function() {
       ngDialog.open({ templateUrl: 'shared/register.html',
@@ -25,9 +25,22 @@ Bidly.controller('NavController', ['$scope', '$location', 'DemoService', 'ngDial
         })
     }
 
+    ItemService.getItems()
+    .then(function(d){
+      console.log(d)
+
+      $scope.user = d.user
+    });
+
     $scope.items = [
-      'Dashboard',
-      'Sign Out',
+      {
+        "label": "Dashboard",
+        "link": "nav.dashboard",
+      },
+      {
+        "label": "Signout",
+        "link": "nav.signout",
+      }
     ];
 
 }])

@@ -1,15 +1,17 @@
 .app-content
   .container
     .item-header.row-space-top-3 ng-include="" src="item.templateUrl"
-    .expiring-cards
-      = image_tag "watch.jpg", :class => "logo-img"
+    .expiring-cards ng-repeat="item in items" ng-if="item.tag == 'normal'"
+      img.post-img ng-src= "{{item.image_url}}" 
       .row#expiring
         .col-md-7
           p Expiring in:
         .col-md-5
-          p 3 Days 15:00
+          p 
+            | {{item.expires}}
       .description
-        h4 Rolex watch
+        h4 
+          | {{item.name}}
         .row.row-space-top-1
           .col-md-6
             .row
@@ -26,7 +28,8 @@
                   | &#xe342;
               .col-md-9
                 p Bidders
-                p 1003
+                p 
+                  | {{item.bid_cost}}
       .bid-now
         button.outline-button.outline-button-orange.orange ng-click="bid()" BID NOW
         

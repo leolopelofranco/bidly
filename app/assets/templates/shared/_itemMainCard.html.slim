@@ -1,10 +1,11 @@
 .row
   .col-md-6
-    img ng-src="https://dl.dropboxusercontent.com/u/24038622/iphone.png"
+    img ng-src="{{featured.image_url}}"
   .col-md-6
     .item-info
       p Most Popular Deal
-      h4.row-space-top-4.light-blue Iphone 7s - Jette black
+      h4.row-space-top-4.light-blue
+        | {{featured.name}}
       .row.row-space-top-3
         .col-md-6
           .row
@@ -21,7 +22,8 @@
                 | &#xe342;
             .col-md-9
               p Bidders
-              p 1003
+              p 
+                | {{featured.bidders}}
       .row
         .col-md-6
           .row
@@ -30,7 +32,8 @@
                 | &#xe354;
             .col-md-9
               p Bid Cost
-              p 300
+              p 
+                | {{featured.bid_cost}}
         .col-md-6
           .row
             .col-md-3
@@ -38,10 +41,12 @@
                 | &#xe373;
             .col-md-9
               p Savings
-              p Up to 80%
+              p 
+                | Up to {{featured.savings}}%
       .row
         .col-md-6
           h4 EXPIRES ON:
         .col-md-6
-          h4 10:23:58
+          h4 
+            | {{featured.expires}}
       button.outline-button.outline-button-orange.orange.row-space-top-4 ng-click="bid()" BID NOW
